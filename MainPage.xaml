@@ -19,21 +19,29 @@
             VerticalOptions="Center">
 
 
-            <Picker x:Name="picker"
-                Title="Selecciona una misión">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String></x:String>
-                        <x:String>Capuchin Monkey</x:String>
-                        <x:String>Blue Monkey</x:String>
-                        <x:String>Squirrel Monkey</x:String>
-                        <x:String>Golden Lion Tamarin</x:String>
-                        <x:String>Howler Monkey</x:String>
-                        <x:String>Japanese Macaque</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <ListView x:Name="ListaMisiones"
+                 ItemsSource="{Binding ListaMisiones}" SelectedItem="{Binding MisionSeleccionada}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding NombreMision}" 
+                                       Margin="30, 0, 5, 5"
+                                       FontSize="15"
+                                       ></Label>
+                                </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
+            <Button x:Name="MostrarDetalles" Text="Ver Detalles" Command="{Binding MostrarDetallesCommand}"/>
+
+            <StackLayout IsVisible="{Binding DatosMisionEsVisible}">
+                <Label Text="{Binding MisionSeleccionada.NombreMision}"></Label>
+                <Label Text="{Binding MisionSeleccionada.Descripcion}"></Label>
+                <Label Text="{Binding MisionSeleccionada.Recompensa}"></Label>
+            </StackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
