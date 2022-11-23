@@ -43,6 +43,8 @@ namespace MandalorianoMaui.ViewModels
             }     
         }
 
+        //fdf
+
         public DelegateCommand MostrarDetallesCommand {
 
             get {
